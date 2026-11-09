@@ -12,6 +12,8 @@ The project uses the [Hotel Booking Demand dataset](https://www.kaggle.com/datas
 
 The target variable is `is_canceled` (`1` for a canceled booking and `0` otherwise). The dataset contains records for city and resort hotel bookings, with booking, guest, and stay information.
 
+See the [data dictionary](docs/data_dictionary.md) for technical definitions of the source columns. The project notebooks document data-preparation findings and modeling decisions.
+
 ## Project plan
 
 - Explore and prepare the data, including missing-value and target analysis.
@@ -27,6 +29,8 @@ The target variable is `is_canceled` (`1` for a canceled booking and `0` otherwi
 ├── data/
 │   └── raw/
 │       └── hotel_bookings.csv
+├── docs/
+│   └── data_dictionary.md
 ├── notebooks/       # Data preparation, EDA, and model selection
 ├── src/             # Training and prediction service
 ├── models/          # Trained model artifacts
