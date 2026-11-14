@@ -32,7 +32,7 @@ See the [data dictionary](docs/data_dictionary.md) for technical definitions of 
 ├── docs/
 │   └── data_dictionary.md
 ├── notebooks/       # Data preparation, EDA, and model selection
-├── src/             # Training and prediction service
+├── src/             # Training, prediction, and web service scripts
 ├── models/          # Trained model artifacts
 ├── Dockerfile
 ├── requirements.txt
@@ -40,6 +40,25 @@ See the [data dictionary](docs/data_dictionary.md) for technical definitions of 
 ```
 
 Some planned files and directories may be added as the project develops.
+
+## Run the workflow locally
+
+The scripts follow the project instructions:
+
+- `src/train.py` trains the selected XGBoost pipeline and saves the model artifact and metadata under `models/`.
+- `src/predict.py` loads the saved artifact and runs inference for a JSON booking object or a list of booking objects.
+- `src/serve.py` starts the FastAPI web service and exposes the prediction endpoint.
+
+From the project root, activate the project environment and run:
+
+```bash
+python src/train.py
+python src/predict.py data/sample_booking.json
+cd src
+python serve.py
+```
+
+The service listens on port `9696`. A `GET /` request returns a health-check response, and a `POST /predict` request accepts the same booking JSON format used by `predict.py`.
 
 ## Status
 
