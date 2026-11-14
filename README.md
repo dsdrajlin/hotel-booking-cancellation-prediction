@@ -116,9 +116,47 @@ docker run --rm -p 9696:9696 hotel-booking-cancellation
 
 Once the container is running, use the same `curl` commands described above.
 
+## Cloud deployment on Render
+
+The Dockerized API is also deployed as a Render Web Service. Render builds the service from the repository `Dockerfile` and provides a public HTTPS URL:
+
+```text
+https://hotel-booking-cancellation-prediction-6nai.onrender.com
+```
+
+The health check can be tested with:
+
+```bash
+curl https://hotel-booking-cancellation-prediction-6nai.onrender.com/
+```
+
+To send the example booking to the deployed service, run the following command from the project root:
+
+```bash
+curl -X POST https://hotel-booking-cancellation-prediction-6nai.onrender.com/predict \
+  -H "Content-Type: application/json" \
+  --data-binary @data/sample_booking.json
+```
+
+The deployed service returns the same prediction as the local and Docker deployments:
+
+```json
+{
+  "predictions": [
+    {
+      "cancellation_probability": 0.1804,
+      "is_canceled_prediction": 0,
+      "threshold": 0.4
+    }
+  ]
+}
+```
+
+The free Render instance may spin down after inactivity, so the first request after a period without traffic can take longer while the service starts again.
+
 ## Status
 
-EDA, model development, local deployment, and Docker validation are complete. Cloud deployment remains as the next optional project milestone.
+EDA, model development, local deployment, Docker validation, and cloud deployment are complete.
 
 ## Acknowledgments
 
