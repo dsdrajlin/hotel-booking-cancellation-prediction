@@ -1,5 +1,6 @@
 """Serve the hotel booking cancellation model through a FastAPI service."""
 
+import os
 from typing import Any
 
 from fastapi import Body, FastAPI, HTTPException
@@ -30,4 +31,5 @@ def predict(payload: Any = Body(...)):
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=9696)
+    port = int(os.getenv("PORT", "9696"))
+    uvicorn.run(app, host="0.0.0.0", port=port)
