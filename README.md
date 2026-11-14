@@ -154,10 +154,6 @@ The deployed service returns the same prediction as the local and Docker deploym
 
 The free Render instance may spin down after inactivity, so the first request after a period without traffic can take longer while the service starts again.
 
-## Status
-
-EDA, model development, local deployment, Docker validation, and cloud deployment are complete.
-
 ## Acknowledgments
 
 Dataset source: [Hotel Booking Demand on Kaggle](https://www.kaggle.com/datasets/jessemostipak/hotel-booking-demand).
