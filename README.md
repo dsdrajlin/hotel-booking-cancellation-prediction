@@ -154,6 +154,24 @@ The deployed service returns the same prediction as the local and Docker deploym
 
 The free Render instance may spin down after inactivity, so the first request after a period without traffic can take longer while the service starts again.
 
+### Test the API from a browser
+
+FastAPI also provides an interactive Swagger UI. Open the following URL in a browser:
+
+```text
+https://hotel-booking-cancellation-prediction-6nai.onrender.com/docs
+```
+
+To test the prediction endpoint:
+
+1. Expand `POST /predict`.
+2. Click **Try it out**.
+3. Paste the contents of `data/sample_booking.json` into the request body.
+4. Click **Execute**.
+5. Review the prediction in the response body.
+
+Opening `/predict` directly in the browser address bar sends a `GET` request, so it does not test this endpoint. Use the Swagger UI or `curl` to send the required `POST` request.
+
 ## Acknowledgments
 
 Dataset source: [Hotel Booking Demand on Kaggle](https://www.kaggle.com/datasets/jessemostipak/hotel-booking-demand).
