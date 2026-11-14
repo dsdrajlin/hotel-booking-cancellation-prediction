@@ -39,7 +39,24 @@ See the [data dictionary](docs/data_dictionary.md) for technical definitions of 
 └── README.md
 ```
 
-Some planned files and directories may be added as the project develops.
+Additional deployment files may be added as the project develops.
+
+## Environment setup
+
+The project uses Python and the dependencies listed in `requirements.txt`. From the project root:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+On Windows PowerShell, activate the environment with:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
 
 ## Run the workflow locally
 
@@ -58,11 +75,50 @@ cd src
 python serve.py
 ```
 
-The service listens on port `9696`. A `GET /` request returns a health-check response, and a `POST /predict` request accepts the same booking JSON format used by `predict.py`.
+The service listens on port `9696`. A `GET /` request returns a health-check response:
+
+```bash
+curl http://localhost:9696/
+```
+
+To request a prediction, use the sample booking from a second terminal opened at the project root:
+
+```bash
+curl -X POST http://localhost:9696/predict \
+  -H "Content-Type: application/json" \
+  --data-binary @data/sample_booking.json
+```
+
+The response contains the estimated cancellation probability, the binary prediction, and the threshold used by the final workflow:
+
+```json
+{
+  "predictions": [
+    {
+      "cancellation_probability": 0.1804,
+      "is_canceled_prediction": 0,
+      "threshold": 0.4
+    }
+  ]
+}
+```
+
+`cancellation_probability` is the model's estimated probability of cancellation. `is_canceled_prediction` is `1` when that probability is at least the selected threshold and `0` otherwise.
+
+## Run with Docker
+
+The Docker image contains the serving code, dependencies, and trained model artifacts. From the project root:
+
+```bash
+docker build -t hotel-booking-cancellation .
+docker run --rm -p 9696:9696 hotel-booking-cancellation
+```
+
+Once the container is running, use the same `curl` commands described above.
 
 ## Status
 
-Project setup and initial dataset selection are complete. Data analysis, model development, local deployment, and cloud deployment are planned.
+EDA, model development, local deployment, and Docker validation are complete. Cloud deployment remains as the next optional project milestone.
 
 ## Acknowledgments
 
