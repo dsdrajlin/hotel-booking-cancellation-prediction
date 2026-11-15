@@ -16,7 +16,7 @@ This document is a technical reference for the 32 columns in `data/raw/hotel_boo
 | `stays_in_weekend_nights` | Integer | Number of weekend nights (Saturday or Sunday) included in the booking. |
 | `stays_in_week_nights` | Integer | Number of week nights (Monday through Friday) included in the booking. |
 | `adults` | Integer | Number of adults included in the booking. |
-| `children` | Numeric | Number of children included in the booking. |
+| `children` | Integer | Number of children included in the booking. |
 | `babies` | Integer | Number of babies included in the booking. |
 | `meal` | Categorical | Meal plan associated with the booking. Examples include `BB` (bed and breakfast), `HB` (half board), `FB` (full board), and `SC` (self-catering). |
 | `country` | Categorical | Country of origin of the guest, represented by a country code. |
@@ -29,8 +29,8 @@ This document is a technical reference for the 32 columns in `data/raw/hotel_boo
 | `assigned_room_type` | Categorical | Code for the room type assigned to the booking. The room-type codes are anonymized. |
 | `booking_changes` | Integer | Number of changes made to the booking. |
 | `deposit_type` | Categorical | Deposit policy associated with the booking: `No Deposit`, `Non Refund`, or `Refundable`. |
-| `agent` | Categorical identifier | Identifier of the travel agent associated with the booking, when applicable. The value is an ID, not a measured quantity. |
-| `company` | Categorical identifier | Identifier of the company associated with the booking, when applicable. The value is an ID, not a measured quantity. |
+| `agent` | Categorical | Identifier of the travel agent associated with the booking, when applicable. The value is an ID, not a measured quantity. |
+| `company` | Categorical | Identifier of the company associated with the booking, when applicable. The value is an ID, not a measured quantity. |
 | `days_in_waiting_list` | Integer | Number of days the booking was on the waiting list before it was confirmed. |
 | `customer_type` | Categorical | Booking type: `Contract`, `Group`, `Transient`, or `Transient-Party`. |
 | `adr` | Numeric | Average daily rate associated with the booking. |

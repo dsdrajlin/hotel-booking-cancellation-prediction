@@ -39,8 +39,6 @@ See the [data dictionary](docs/data_dictionary.md) for technical definitions of 
 └── README.md
 ```
 
-Additional deployment files may be added as the project develops.
-
 ## Environment setup
 
 The project uses Python and the dependencies listed in `requirements.txt`. From the project root:
